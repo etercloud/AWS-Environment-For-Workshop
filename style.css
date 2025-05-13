@@ -1,0 +1,198 @@
+/* --- Reset Básico y Configuración Global --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    line-height: 1.6;
+    background-color: #f0f8ff; /* Celeste muy pálido (AliceBlue) */
+    color: #333;
+}
+
+/* --- Contenedor Principal --- */
+main {
+    max-width: 960px;
+    margin: 2rem auto; /* Centrado y con margen */
+    padding: 2rem;
+    background-color: #ffffff; /* Fondo blanco para el contenido */
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Encabezado y Navegación --- */
+header {
+    background-color: #add8e6; /* Celeste (LightBlue) */
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    margin-bottom: 0.5rem;
+    font-size: 2.2rem;
+    color: #1e3a8a; /* Azul más oscuro para contraste */
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex; /* Menú horizontal */
+    justify-content: center;
+    gap: 1.5rem; /* Espacio entre elementos del menú */
+}
+
+nav a {
+    text-decoration: none;
+    color: #1e3a8a; /* Azul más oscuro */
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+nav a:hover,
+nav a.active { /* Estilo para enlace activo y hover */
+    background-color: #ffffff; /* Fondo blanco al pasar el ratón o activo */
+    color: #1e90ff; /* Celeste más intenso (DodgerBlue) */
+}
+
+/* --- Vistas (Sections) --- */
+.view {
+    display: none; /* Ocultar todas las vistas por defecto */
+    animation: fadeIn 0.5s ease-in-out; /* Animación suave al aparecer */
+}
+
+.view.active {
+    display: block; /* Mostrar solo la vista activa */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+section h2 {
+    color: #1e90ff; /* Celeste intenso */
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #add8e6; /* Línea celeste bajo el título */
+}
+
+section p {
+    margin-bottom: 1rem;
+}
+
+/* --- Galería simple (Vista Inicio) --- */
+.gallery {
+    display: flex;
+    flex-wrap: wrap; /* Para que las imágenes se ajusten */
+    gap: 1rem; /* Espacio entre imágenes */
+    justify-content: center; /* Centrar imágenes */
+    margin: 1.5rem 0;
+}
+
+.gallery img {
+    max-width: 100%; /* Hacer las imágenes responsivas */
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* --- Contenedor de Búsqueda (Vista Búsqueda) --- */
+.search-container {
+    display: flex;
+    gap: 0.5rem; /* Espacio entre input y botón */
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap; /* Para mejor ajuste en móviles */
+}
+
+#search-input {
+    flex-grow: 1; /* El input ocupa el espacio disponible */
+    padding: 0.7rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+#search-button {
+    padding: 0.7rem 1.5rem;
+    background-color: #1e90ff; /* Celeste intenso */
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+#search-button:hover {
+    background-color: #1c86ee; /* Celeste ligeramente más oscuro */
+}
+
+/* --- Resultados de Búsqueda --- */
+#search-results {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background-color: #f0f8ff; /* Fondo celeste pálido para resultados */
+    border: 1px dashed #add8e6; /* Borde discontinuo celeste */
+    border-radius: 5px;
+    min-height: 50px; /* Altura mínima para que se vea el contenedor */
+}
+
+#search-results .animal-item {
+    background-color: #fff;
+    padding: 0.8rem;
+    margin-bottom: 0.5rem;
+    border-radius: 4px;
+    border-left: 5px solid #1e90ff; /* Barra lateral celeste */
+}
+
+#search-results .animal-item strong {
+    color: #1e3a8a; /* Nombre en azul oscuro */
+}
+
+/* --- Pie de Página --- */
+footer {
+    text-align: center;
+    margin-top: 2rem;
+    padding: 1rem;
+    background-color: #e0f2f7; /* Celeste muy claro */
+    color: #555;
+    font-size: 0.9rem;
+    border-top: 1px solid #add8e6; /* Línea superior celeste */
+}
+
+/* --- Responsividad Simple --- */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.8rem;
+    }
+    nav ul {
+        flex-direction: column; /* Menú vertical en pantallas pequeñas */
+        gap: 0.5rem;
+    }
+    main {
+        margin: 1rem;
+        padding: 1rem;
+    }
+    .gallery img {
+        max-width: 45%; /* Dos imágenes por fila en pantallas medianas */
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery img {
+        max-width: 90%; /* Una imagen por fila en pantallas pequeñas */
+    }
+    .search-container {
+        flex-direction: column;
+    }
+    #search-button {
+        width: 100%; /* Botón ocupa todo el ancho */
+    }
+}
+
